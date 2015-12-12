@@ -9,7 +9,7 @@ public class Homework {
     public static int ch1_1 (int a, int b){
         int c=0;
         c = a + b;
-        println(""+c);
+//        println(""+c);
         return c;
     }
 
