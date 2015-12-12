@@ -6,21 +6,30 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 public class HomeworkActivity extends AppCompatActivity {
 
     SparseArray<Group> groups = new SparseArray<Group>();
+    static int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homework);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getInt("id");
+        }
+
         createData();
         ExpandableListView listView = (ExpandableListView) findViewById(R.id.listChapters);
-        HomeworkExpandableListAdapter adapter = new HomeworkExpandableListAdapter(this, groups, this);
+        HomeworkExpandableListAdapter adapter = new HomeworkExpandableListAdapter(this, groups, this, id);
         listView.setAdapter(adapter);
     }
 
@@ -30,7 +39,7 @@ public class HomeworkActivity extends AppCompatActivity {
             Group group = new Group("Chapter " + ch);
             for (int i = 0; i < 10; i++) {
                 int question = i + 1;
-                group.children.add("Question " + ch + "." + question);
+                group.children.add("Question " + ch + "_" + question);
             }
             groups.append(j, group);
         }

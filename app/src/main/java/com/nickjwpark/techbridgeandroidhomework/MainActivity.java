@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     EditText textPassword;
     String email;
     String password;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "이메일과 비밀번호가 일치하지 않습니다.",Toast.LENGTH_LONG).show();
         } else{
             boolean match = false;
+            int pos = response.indexOf("pw:");
+            id = Integer.parseInt(response.substring(0,pos));
+            response = response.substring(pos+3);
             try {
                 match = PasswordHash.validatePassword(password, response);
             } catch (NoSuchAlgorithmException e) {
@@ -104,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         Activity fromActivity = this;
         Class toActivity = HomeworkActivity.class;
         Intent intent = new Intent(fromActivity,toActivity);
+        intent.putExtra("id",id);
         startActivity(intent);
     }
 

@@ -24,11 +24,13 @@ public class HomeworkExpandableListAdapter extends BaseExpandableListAdapter{
     private Context context;
     public LayoutInflater inflater;
     public Activity activity;
+    int id;
 
-    public HomeworkExpandableListAdapter(Activity act, SparseArray<Group> groups, Context context) {
+    public HomeworkExpandableListAdapter(Activity act, SparseArray<Group> groups, Context context, int id) {
         activity = act;
         this.groups = groups;
         this.context = context;
+        this.id = id;
         inflater = act.getLayoutInflater();
     }
 
@@ -60,6 +62,7 @@ public class HomeworkExpandableListAdapter extends BaseExpandableListAdapter{
                 Class toActivity = QuestionActivity.class;
                 Intent intent = new Intent(fromActivity,toActivity);
                 intent.putExtra("question", children);
+                intent.putExtra("id",id);
                 context.startActivity(intent);
             }
         });
