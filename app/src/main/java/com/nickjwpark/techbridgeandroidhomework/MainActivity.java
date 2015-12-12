@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     CheckBox chkboxRemember;
     String email;
     String password;
+    String classId;
     int id;
 
     public SharedPreferences loginPreferences;
@@ -99,9 +100,13 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "이메일과 비밀번호가 일치하지 않습니다.",Toast.LENGTH_LONG).show();
         } else{
             boolean match = false;
-            int pos = response.indexOf("pw:");
+            int pos = response.indexOf("class:");
             id = Integer.parseInt(response.substring(0,pos));
+            response = response.substring(pos+6);
+            pos = response.indexOf("pw:");
+            classId = response.substring(0,pos);
             response = response.substring(pos+3);
+
             try {
                 match = PasswordHash.validatePassword(password, response);
             } catch (NoSuchAlgorithmException e) {
@@ -111,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             }
             if(match){
                 Toast.makeText(getApplicationContext(), "로그인 성공!",Toast.LENGTH_LONG).show();
-                homeworkActivity();
+                memberMainActivity();
                 finish();
             } else {
                 Toast.makeText(getApplicationContext(), "이메일과 비밀번호가 일치하지 않습니다.",Toast.LENGTH_LONG).show();
@@ -133,11 +138,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void homeworkActivity(){
+    public void memberMainActivity(){
         Activity fromActivity = this;
-        Class toActivity = HomeworkActivity.class;
+        Class toActivity = MemberMainActivity.class;
         Intent intent = new Intent(fromActivity,toActivity);
         intent.putExtra("id",id);
+        intent.putExtra("classId",classId);
         startActivity(intent);
     }
 
@@ -147,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(fromActivity,toActivity);
         startActivity(intent);
     }
-
 
     public boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

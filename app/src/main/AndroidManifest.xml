@@ -14,12 +14,16 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".HomeworkActivity"/>
-        <activity android:name=".QuestionActivity"></activity>
+        <activity android:name=".HomeworkActivity" />
+        <activity android:name=".QuestionActivity" />
+        <activity android:name=".MemberMainActivity" />
+        <activity android:name=".SandboxActivity" />
+        <activity android:name=".HighscoreActivity"></activity>
     </application>
 
 </manifest>
