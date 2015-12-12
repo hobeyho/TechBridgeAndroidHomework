@@ -57,7 +57,7 @@
             android:id="@+id/btnRun"
             android:layout_weight="1"
             android:clickable="false"
-            android:enabled="false" />
+            android:enabled="true" />
 
     </LinearLayout>
 </RelativeLayout>

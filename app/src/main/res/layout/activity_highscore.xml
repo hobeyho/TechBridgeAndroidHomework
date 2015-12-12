@@ -9,4 +9,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nickjwpark.techbridgeandroidhomework.HighscoreActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Highscore"
+        android:id="@+id/textHighscoreTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <ScrollView
+        android:id="@+id/scrollLog"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+        android:layout_below="@+id/textHighscoreTitle"
+        android:layout_marginTop="10dp">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listHighscore"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+    </ScrollView>
 </RelativeLayout>

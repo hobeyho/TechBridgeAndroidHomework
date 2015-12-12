@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if(match){
-                Toast.makeText(getApplicationContext(), "로그인 성공!",Toast.LENGTH_LONG).show();
                 memberMainActivity();
                 finish();
             } else {

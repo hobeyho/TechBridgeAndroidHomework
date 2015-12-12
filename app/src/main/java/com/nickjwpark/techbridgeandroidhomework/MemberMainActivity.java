@@ -102,7 +102,7 @@ public class MemberMainActivity extends AppCompatActivity {
         Activity fromActivity = this;
         Class toActivity = HighscoreActivity.class;
         Intent intent = new Intent(fromActivity,toActivity);
-        intent.putExtra("class",classId);
+        intent.putExtra("classId",classId);
         startActivity(intent);
     }
 
