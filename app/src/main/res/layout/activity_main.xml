@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="126dp"
+        android:layout_marginTop="80dp"
         android:id="@+id/linearLayout">
 
         <TextView
@@ -61,6 +61,8 @@
         android:layout_height="wrap_content"
         android:text="로그인"
         android:id="@+id/btnLogin"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_marginTop="40dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -69,16 +71,16 @@
         android:layout_height="wrap_content"
         android:text="수업 등록!"
         android:id="@+id/btnRegister"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="70dp" />
+        android:layout_below="@+id/textView7"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="이 수업이 처음이라면"
         android:id="@+id/textView7"
-        android:layout_above="@+id/btnRegister"
+        android:layout_below="@+id/chkboxRemember"
+        android:layout_marginTop="70dp"
         android:layout_centerHorizontal="true" />
 
     <CheckBox
