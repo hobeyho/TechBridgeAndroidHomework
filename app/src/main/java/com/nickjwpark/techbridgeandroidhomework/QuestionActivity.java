@@ -94,7 +94,7 @@ public class QuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isOnline()){
-                    println("Submitting...\n");
+                    println("Submitting...");
                     new submitTask().execute(new DB_Submit());
                 }else{
                     Toast.makeText(getApplicationContext(), "네트워크 연결을 확인해주세요.",
@@ -200,33 +200,33 @@ public class QuestionActivity extends AppCompatActivity {
             if(num==1){
                 result = ""+Homework.ch1_1(ia, ib);
             } else if(num==2){
-
+                result = ""+Homework.ch1_2(da, db);
             } else if(num==3){
-
+                result = ""+Homework.ch1_3(ia);
             } else if(num==4){
-
+                result = ""+Homework.ch1_4(ia, ib);
             } else if(num==5){
-
+                result = ""+Homework.ch1_5(da, db);
             } else if(num==6){
-
+                result = ""+Homework.ch1_6(ia, ib);
             } else if(num==7){
-
+                result = ""+Homework.ch1_7(da, db);
             } else if(num==8){
-
+                result = ""+Homework.ch1_8(ia, ib);
             } else if(num==9){
-
+                result = ""+Homework.ch1_9(da, db);
             } else if(num==10){
-
+                result = ""+Homework.ch1_10(ia, ib, ic);
             } else if(num==11){
-
+                result = ""+Homework.ch1_11(da, db, dc);
             } else if(num==12){
-
+                result = ""+Homework.ch1_12(ia, da);
             } else if(num==13){
-
+                result = ""+Homework.ch1_13(ia);
             } else if(num==14){
-
+                result = ""+Homework.ch1_14(da, db);
             } else if(num==15){
-
+                result = ""+Homework.ch1_15(ia, ib, da);
             }
         } else if(ch==2){
 
@@ -287,13 +287,20 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void settextToAdapter2(String response) {
         if (response.equals(null)){
-            println("문제가 있습니다");
-        } else if(response.equals("updated successfully!")){
-            println(response);
-        } else if (response.equals("submitted successfully!")){
-            println(response);
+            println("문제가 생겼습니다");
         } else {
-            println("문제가 있습니다");
+            int pos = response.indexOf("ok:");
+            int tot_score = Integer.parseInt(response.substring(0, pos));
+            response = response.substring(pos + 3);
+
+            if (response.equals("updated successfully!")) {
+                println("업데이트 성공! 현재 점수: " + tot_score + "점");
+            } else if (response.equals("submitted successfully!")) {
+                println("제출 성공! 현재 점수: " + tot_score + "점");
+            } else {
+                println("문제가 생겼습니다");
+            }
+            println("");
         }
     }
     public boolean isOnline() {

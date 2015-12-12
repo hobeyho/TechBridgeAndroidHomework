@@ -52,20 +52,27 @@
     </LinearLayout>
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그"
+        android:id="@+id/textLogTitle"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/layoutTypes"/>
+
     <ScrollView
         android:id="@+id/scrollLog"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/layoutTypes"
         android:scrollbars="vertical"
         android:fillViewport="true"
-        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textLogTitle"
         android:layout_marginBottom="50dp">
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:text="로그"
+            android:text=""
             android:id="@+id/textLog"
             android:layout_centerHorizontal="true" />
 
@@ -96,6 +103,7 @@
             android:layout_weight="1"
             android:enabled="false" />
     </LinearLayout>
+
 
 
 </RelativeLayout>

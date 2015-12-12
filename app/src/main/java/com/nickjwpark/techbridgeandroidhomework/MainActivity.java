@@ -1,5 +1,6 @@
 package com.nickjwpark.techbridgeandroidhomework;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.net.NetworkInfo;
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.content.Intent;
@@ -21,9 +23,14 @@ public class MainActivity extends AppCompatActivity {
     Button btnLogin;
     EditText textEmail;
     EditText textPassword;
+    CheckBox chkboxRemember;
     String email;
     String password;
     int id;
+
+    public SharedPreferences loginPreferences;
+    private SharedPreferences.Editor loginPrefsEditor;
+    private Boolean saveLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
         textEmail = (EditText) findViewById(R.id.textEmail);
         textPassword = (EditText) findViewById(R.id.textPassword);
 
+        chkboxRemember = (CheckBox) findViewById(R.id.chkboxRemember);
+
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+        if(saveLogin){
+            chkboxRemember.setChecked(true);
+            textEmail.setText(loginPreferences.getString("email",""));
+            textPassword.setText(loginPreferences.getString("password",""));
+        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +60,19 @@ public class MainActivity extends AppCompatActivity {
                 password = textPassword.getText().toString();
                 if (email!= null && !email.isEmpty() && password!= null && !password.isEmpty()) {
                     if(isOnline()){
+                        if(chkboxRemember.isChecked()){
+                            loginPrefsEditor = loginPreferences.edit();
+                            loginPrefsEditor.putBoolean("saveLogin", true);
+                            loginPrefsEditor.putString("email", email);
+                            loginPrefsEditor.putString("password", password);
+                            loginPrefsEditor.commit();
+                        } else {
+                            loginPrefsEditor = loginPreferences.edit();
+                            loginPrefsEditor.putBoolean("saveLogin", false);
+                            loginPrefsEditor.putString("email", "");
+                            loginPrefsEditor.putString("password", "");
+                            loginPrefsEditor.commit();
+                        }
                         new loginTask().execute(new DB_Login());
                     } else {
                         Toast.makeText(getApplicationContext(), "네트워크 연결을 확인해주세요.",Toast.LENGTH_LONG).show();

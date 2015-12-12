@@ -81,4 +81,13 @@
         android:layout_above="@+id/btnRegister"
         android:layout_centerHorizontal="true" />
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="기억하기"
+        android:id="@+id/chkboxRemember"
+        android:layout_below="@+id/btnLogin"
+        android:layout_centerHorizontal="true"
+        android:checked="false" />
+
 </RelativeLayout>

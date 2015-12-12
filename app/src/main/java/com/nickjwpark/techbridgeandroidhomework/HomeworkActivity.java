@@ -37,7 +37,7 @@ public class HomeworkActivity extends AppCompatActivity {
         for (int j = 0; j < 6; j++) {
             int ch = j + 1;
             Group group = new Group("Chapter " + ch);
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 15; i++) {
                 int question = i + 1;
                 group.children.add("Question " + ch + "_" + question);
             }
