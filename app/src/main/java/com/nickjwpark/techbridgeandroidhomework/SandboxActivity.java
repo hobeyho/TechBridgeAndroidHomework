@@ -18,6 +18,7 @@ public class SandboxActivity extends AppCompatActivity {
     public void runMethod() {
         //try something!
         println("Hello World!");
+        println(""+3.14*10.00);
     }
 
 

@@ -186,6 +186,8 @@ public class QuestionActivity extends AppCompatActivity {
 
             } else if (inputs[i].equals("as")) {
 
+            } else if (inputs[i].equals("n")){
+
             }
         }
 
@@ -222,7 +224,47 @@ public class QuestionActivity extends AppCompatActivity {
                 result = ""+Homework.ch1_15(ia, ib, da);
             }
         } else if(ch==2){
-
+            if(num==1){
+                result = ""+Homework.ch2_1(sa);
+            } else if(num==2){
+                result = ""+Homework.ch2_2();
+            } else if(num==3) {
+                result = ""+Homework.ch2_3(ia);
+            } else if(num==4) {
+                result = ""+Homework.ch2_4(ia);
+            } else if(num==5) {
+                result = ""+Homework.ch2_5();
+            } else if(num==6) {
+                result = ""+Homework.ch2_6();
+                if(Integer.parseInt(result)>=1 && Integer.parseInt(result)<=6){
+                    println("return: "+result);
+                    result = "ok";
+                }
+            } else if(num==7) {
+                result = ""+Homework.ch2_7();
+                println("return: " + result);
+                int count = 0;
+                for (String retval: result.split(" ")){
+                    if(Integer.parseInt(retval)>=1 && Integer.parseInt(retval)<=45){
+                        count++;
+                    }
+                }
+                if(count>=6){
+                    result = "ok";
+                }
+            } else if(num==8) {
+                result = ""+Homework.ch2_8(ia);
+                println("result: "+result);
+                for(String retval: result.split(" ")){
+                    if(Integer.parseInt(retval)==ia){
+                        result = "ok";
+                    }
+                }
+            } else if(num==9) {
+                result = ""+Homework.ch2_9(da);
+            } else if(num==10) {
+                result = ""+Homework.ch2_10(da,db);
+            }
         } else if(ch==3){
 
         } else if(ch==4){

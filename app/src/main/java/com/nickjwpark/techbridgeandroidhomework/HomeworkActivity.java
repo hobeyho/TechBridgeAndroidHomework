@@ -34,10 +34,11 @@ public class HomeworkActivity extends AppCompatActivity {
     }
 
     public void createData() {
+        int [] chqs = {15,10,10,10,10,10};
         for (int j = 0; j < 6; j++) {
             int ch = j + 1;
             Group group = new Group("Chapter " + ch);
-            for (int i = 0; i < 15; i++) {
+            for (int i = 0; i < chqs[j]; i++) {
                 int question = i + 1;
                 group.children.add("Question " + ch + "_" + question);
             }
